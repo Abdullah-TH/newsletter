@@ -10,13 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_18_154413) do
-  create_table "emails", force: :cascade do |t|
-    t.string "subject"
-    t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema[7.2].define(version: 2024_09_18_161511) do
+# Could not dump table "emails" because of following StandardError
+#   Unknown type '' for column 'template_id'
+
 
   create_table "subscribers", force: :cascade do |t|
     t.string "email"
@@ -30,4 +27,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_18_154413) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "emails", "templates"
 end
