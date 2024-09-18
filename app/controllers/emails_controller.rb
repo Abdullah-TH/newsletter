@@ -27,6 +27,9 @@ class EmailsController < ApplicationController
   private
 
   def email_params
-    params.require(:email).permit(:subject, :body, :template_id)
+    result = params.require(:email).permit(:subject, :body, :template_id)
+    result.tap do |params|
+      params[:template_id] = params[:template_id].presence
+    end
   end
 end
