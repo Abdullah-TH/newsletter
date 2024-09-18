@@ -6,14 +6,18 @@
   <div class="flex gap-3">
     <div class="flex flex-col w-1/4">
       <% @emails.each do |email| %>
-        <div class="border border-gray-300 rounded p-4 mb-2">
-          <div><%= email.subject %></div>
-          <div><%= l(email.created_at, format: :short) %></div>
-        </div>
+        <%= link_to email_path(email), data: { turbo_frame: "email-preview" } do %>
+          <div class="border border-gray-300 rounded p-4 mb-2 hover:bg-sky-300">
+            <div><%= email.subject %></div>
+            <div><%= l(email.created_at, format: :short) %></div>
+          </div>
+        <% end %>
       <% end %>
     </div>
     <div class="p-4 border border-gray-300 rounded w-3/4 h-screen">
-      Preview
+      <%= turbo_frame_tag "email-preview" do %>
+        Preview
+      <% end %>
     </div>
   </div>
 </div>
