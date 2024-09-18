@@ -10,6 +10,9 @@ class EmailsController < ApplicationController
   def create
     @email = Email.new(email_params)
     if @email.save
+      Subscriber.all.each do |subscriber|
+        NewsletterMailer.email(subscriber, @email).deliver_now
+      end
       redirect_to emails_path, notice: "Email Sent"
     else
       render "new", status: :unprocessable_content
