@@ -17,6 +17,10 @@
         <%= f.label :body, class: "block w-full" %>
         <%= f.text_area :body, class: "block w-full" %>
       </fieldset>
+      <fieldset>
+        <%= f.label :template_id %>
+        <%= f.select :template_id, options_from_collection_for_select(@templates, :id, :title), include_blank: "None" %>
+      </fieldset>
       <%= f.submit "Save", class: "bg-sky-600 text-white p-2 rounded hover:bg-sky-500 cursor-pointer" %>
     </div>
   <% end %>

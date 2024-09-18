@@ -1,5 +1,5 @@
 class Template < ApplicationRecord
-  validates :name, presence: true
+  validates :title, presence: true
   validate :must_contain_placeholder
 
   private
