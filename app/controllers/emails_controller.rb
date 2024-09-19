@@ -20,6 +20,7 @@ class EmailsController < ApplicationController
       end
       redirect_to emails_path, notice: "Email Sent"
     else
+      @templates = Template.all
       render "new", status: :unprocessable_content
     end
   end
