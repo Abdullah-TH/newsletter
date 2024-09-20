@@ -18,23 +18,32 @@
         <%= f.text_area :body, class: "block w-full" %>
       </fieldset>
       <fieldset class="grid grid-cols-2 gap-4">
+<!--        <div class="flex flex-col h-full">-->
+<!--          <div class="flex justify-between items-baseline">-->
+<!--            <h3 class="">None</h3>-->
+<!--          </div>-->
+          <%#= f.radio_button :template_id, nil, id: "none", class: "hidden peer" %>
+<!--          <label for="none" class="block w-full h-full p-3 break-words rounded border border-gray-300 cursor-pointer hover:bg-sky-500 peer-checked:bg-sky-600 peer-checked:text-white">-->
+<!--            <span class="block">{{placeholder}}</span>-->
+<!--          </label>-->
+<!--        </div>-->
         <% @templates.each do |template| %>
           <div class="flex flex-col h-full">
             <div class="flex justify-between items-baseline">
               <h3 class=""><%= template.title %></h3>
               <div class="flex gap-2 text-sm">
-                <%= link_to "Edit", "#" %>
-                <%= link_to "Delete", "#" %>
+                <%= link_to "Edit", edit_template_path(template), class: "hover:text-sky-500" %>
+                <%= link_to "Delete", template_path(template), class: "hover:text-sky-500", data: { turbo_method: "delete", turbo_confirm: "Are you sure?" } %>
               </div>
             </div>
             <%= f.radio_button :template_id, template.id, id: "#{template.id}", class: "hidden peer" %>
-            <label for="<%= template.id %>" class="block w-full h-full p-3 break-words rounded border border-gray-300 peer-checked:bg-sky-600 peer-checked:text-white">
+            <label for="<%= template.id %>" class="block w-full h-full p-3 break-words rounded border border-gray-300 cursor-pointer hover:bg-sky-500 peer-checked:bg-sky-600 peer-checked:text-white">
               <span class="block"><%= template.body %></span>
             </label>
           </div>
         <% end %>
       </fieldset>
-
+      <%= link_to "New Template", new_template_path, class: "border border-sky-600 p-2 rounded text-center hover:bg-sky-500 hover:text-white" %>
       <%= f.submit "Save", class: "bg-sky-600 text-white p-2 rounded hover:bg-sky-500 cursor-pointer" %>
     </div>
   <% end %>
