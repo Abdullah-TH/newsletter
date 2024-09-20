@@ -17,7 +17,11 @@
         <%= f.label :body, class: "block w-full" %>
         <%= f.text_area :body, class: "block w-full" %>
       </fieldset>
-      <fieldset class="grid grid-cols-2 gap-4">
+      <div class="flex justify-between items-center my-3">
+        <h1 class="">Select Template</h1>
+        <%= link_to "New Template", new_template_path, class: "bg-sky-600 text-white p-2 rounded hover:bg-sky-500 cursor-pointer" %>
+      </div>
+      <fieldset class="grid grid-cols-2 gap-4 mb-3">
 <!--        <div class="flex flex-col h-full">-->
 <!--          <div class="flex justify-between items-baseline">-->
 <!--            <h3 class="">None</h3>-->
@@ -43,8 +47,8 @@
           </div>
         <% end %>
       </fieldset>
-      <%= link_to "New Template", new_template_path, class: "border border-sky-600 p-2 rounded text-center hover:bg-sky-500 hover:text-white" %>
-      <%= f.submit "Save", class: "bg-sky-600 text-white p-2 rounded hover:bg-sky-500 cursor-pointer" %>
+      <%= f.submit "Save", class: "text-lg bg-sky-600 text-white p-2 rounded hover:bg-sky-500 cursor-pointer" %>
+      <%= link_to "Cancel", emails_path, class: "border border-sky-600 p-2 rounded text-center hover:bg-sky-500 hover:text-white" %>
     </div>
   <% end %>
 </div>

@@ -2,7 +2,7 @@ class NewsletterMailer < ApplicationMailer
   def email(subscriber, email)
     subscriber = subscriber
     email = email
-    body = email.template.nil? ? email.body : email.template.body.gsub("{{placeholder}}", email.body)
+    body = email.body_with_template
     mail to: subscriber.email,
          subject: email.subject,
          content_type: "text/html",
